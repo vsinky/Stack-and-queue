@@ -15,31 +15,43 @@ public class Queue {
 		count = 0;
 	}
 
-	void enQueue(int data) {
+	public void enQueue(int data) {
 
 		if (isFull()) {
-			System.out.println("Overflow\nProgram Terminated");
+			System.out.println("Overflow");
 			return;
 		}
 
-		System.out.println("adding " + data);
+		System.out.println("queue: " + data);
 
 		rear = (rear + 1) % capacity;
+		System.out.println("rear : " + rear);
 		array[rear] = data;
 		count++;
 	}
 
+	public void deQueue() {
+		if(isempty()) {
+			System.out.println("queue is empty");
+			return;
+		}
+		System.out.println("removing the element from queue");
+		front = (front+1)%capacity;
+		System.out.println("Front : " + front);
+		count--;
+	}
+
+	public boolean isempty() {
+
+		return size()==0;
+	}
+
 	public boolean isFull() {
-		return (size() == capacity);
+
+		return size() == this.capacity;
 	}
 
 	public int size() {
 		return count;
-	}
-
-	void display() {
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i] + " -> ");
-		}
 	}
 }
